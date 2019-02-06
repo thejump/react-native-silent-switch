@@ -1,4 +1,4 @@
-#import "HASilentSwitchDetector.h"
+#import "SharkfoodMuteSwitchDetector.h"
 
 void MuteSoundPlaybackComplete(SystemSoundID ssID, void *clientData)
 {
