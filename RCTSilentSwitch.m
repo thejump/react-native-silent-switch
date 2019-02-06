@@ -1,24 +1,20 @@
+    
 #import "RCTSilentSwitch.h"
-#import "RCTEventDispatcher.h"
 
 @implementation RCTSilentSwitch
 
-@synthesize bridge = _bridge;
-
--(id)init {
-    if (self) {
-        self.detector = [SharkfoodMuteSwitchDetector shared];
-    }
-    return self;
-}
-
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(subscribe) {
-    self.detector.silentNotify = ^(BOOL silent) {
-        [self.bridge.eventDispatcher sendAppEventWithName:@"SilentSwitch"
-                                                     body:@{@"status": silent?@"ON":@"OFF"}];
-    };
+
+RCT_EXPORT_METHOD(     resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+ [HASilentSwitchDetector ifMute:^(BOOL success, BOOL silent) {
+    if ( success ) {
+        resolve(silent);
+
+    }
+}];
+ 
 }
 
 @end
