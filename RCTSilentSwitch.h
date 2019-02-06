@@ -1,8 +1,8 @@
-#import "RCTBridgeModule.h"
-#import "SharkfoodMuteSwitchDetector.h"
+ 
 
+#import <UIKit/UIKit.h>
+#import <React/RCTBridgeModule.h>
 @interface RCTSilentSwitch : NSObject <RCTBridgeModule>
-
-@property (nonatomic,strong) SharkfoodMuteSwitchDetector* detector;
+  
 
 @end
