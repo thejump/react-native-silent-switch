@@ -1,20 +1,9 @@
-//
-//  SharkfoodMuteSwitchDetector.h
-//
-//  Created by Moshe Gottlieb on 6/2/13.
-//  Copyright (c) 2013 Sharkfood. All rights reserved.
-//
+#import <AudioToolbox/AudioToolbox.h>
 
-#import <Foundation/Foundation.h>
+typedef void(^HASilentSwitchDetectorBlock)(BOOL success, BOOL silent);
 
+@interface HASilentSwitchDetector : NSObject
 
-typedef void(^SharkfoodMuteSwitchDetectorBlock)(BOOL silent);
-
-@interface SharkfoodMuteSwitchDetector : NSObject
-
-+(SharkfoodMuteSwitchDetector*)shared;
-
-@property (nonatomic,readonly) BOOL isMute;
-@property (nonatomic,copy) SharkfoodMuteSwitchDetectorBlock silentNotify;
++ (void)ifMute:(HASilentSwitchDetectorBlock)then;
 
 @end
