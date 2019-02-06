@@ -1,6 +1,6 @@
     
 #import "RCTSilentSwitch.h"
-
+#import "SharkfoodMuteSwitchDetector.h"
 @implementation RCTSilentSwitch
 
 RCT_EXPORT_MODULE()
@@ -10,7 +10,9 @@ RCT_EXPORT_METHOD(     resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
 {
  [HASilentSwitchDetector ifMute:^(BOOL success, BOOL silent) {
     if ( success ) {
-        resolve(silent);
+        NSString *result=silent?@"true":@"false";
+       
+        resolve(result);
 
     }
 }];
